@@ -1,41 +1,16 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPaperPlane, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 import BackToTopButton from './BackToTopButton';
 import './stylle.css';
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // For production, you'll need to set up a proper backend URL
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3033';
-      const response = await axios.post(`${apiUrl}/api/send`, formData);
-      alert(response.data);
-    } catch (error) {
-      console.error('Error sending email:', error);
-      alert('Error sending email. Please try again later.');
-    }
-
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
+  const handleEmailClick = () => {
+    const subject = encodeURIComponent('Portfolio Contact');
+    const body = encodeURIComponent('Hello Ikshant,\n\nI would like to get in touch with you regarding your portfolio.\n\nBest regards,');
+    window.open(`mailto:ikshankshukla44@gmail.com?subject=${subject}&body=${body}`, '_blank');
   };
 
   return (
@@ -63,65 +38,36 @@ const ContactForm = () => {
           </ul>
           <hr />
           <ul className="social-media-list">
-    <li>
-      <a href=".." target="_blank" className="contact-icon" rel="noreferrer">
-        <FontAwesomeIcon icon={faFacebook} aria-hidden="true" />
-      </a>
-    </li>
-    <li>
-      <a href="https://www.instagram.com/ikshankkk/" target="_blank" className="contact-icon" rel="noreferrer">
-        <FontAwesomeIcon icon={faInstagram} aria-hidden="true" />
-      </a>
-    </li>
-   
-  </ul>
+            <li>
+              <a href="https://www.facebook.com/" target="_blank" className="contact-icon" rel="noreferrer">
+                <FontAwesomeIcon icon={faFacebook} aria-hidden="true" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/ikshankkk/" target="_blank" className="contact-icon" rel="noreferrer">
+                <FontAwesomeIcon icon={faInstagram} aria-hidden="true" />
+              </a>
+            </li>
+          </ul>
           <hr />
         </div>
-        <form id="contact-form" className="form-horizontal" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input
-                type="text"
-                className="form-control Name"
-                id="name"
-                placeholder="Name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
+        
+        <div className="contact-form-container">
+          <div className="contact-info">
+            <h3>Get In Touch</h3>
+            <p>I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology!</p>
+            <div className="contact-buttons">
+              <button onClick={handleEmailClick} className="contact-btn email-btn">
+                <FontAwesomeIcon icon={faEnvelope} />
+                Send Email
+              </button>
+              <a href="tel:+91 8109537034" className="contact-btn phone-btn">
+                <FontAwesomeIcon icon={faPhone} />
+                Call Now
+              </a>
             </div>
           </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <input
-                type="email"
-                className="form-control Mail"
-                id="email"
-                placeholder="E-Mail"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-          <textarea
-            className="form-control1"
-            rows="10"
-            placeholder="Message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-          <button className="btn btn-primary send-button" id="submit" type="submit" value="SEND">
-            <div className="alt-send-button">
-              <FontAwesomeIcon icon={faPaperPlane} className='fa' />
-              <span className="send-text">SEND</span>
-            </div>
-          </button>
-        </form>
+        </div>
       </div>
       <BackToTopButton />
     </section>

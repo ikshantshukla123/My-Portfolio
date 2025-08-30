@@ -6,7 +6,7 @@ A modern, responsive portfolio website showcasing my skills as a Full Stack Deve
 
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
 - **Modern UI/UX**: Beautiful animations and smooth transitions
-- **Contact Form**: Functional contact form with email integration
+- **Contact Integration**: Direct email and phone contact buttons
 - **Skills Showcase**: Interactive skill charts and progress indicators
 - **Project Gallery**: Showcase of my best projects
 - **Mobile-First**: Hamburger menu for mobile navigation
@@ -20,12 +20,6 @@ A modern, responsive portfolio website showcasing my skills as a Full Stack Deve
 - **FontAwesome** - Icons
 - **React Scroll** - Smooth scrolling navigation
 
-### Backend
-- **Node.js** - Server runtime
-- **Express.js** - Web framework
-- **Nodemailer** - Email functionality
-- **Google OAuth2** - Email authentication
-
 ## 📁 Project Structure
 
 ```
@@ -33,6 +27,7 @@ portfolio/
 ├── public/
 │   ├── index.html
 │   ├── manifest.json
+│   ├── _redirects
 │   └── favicon.ico
 ├── src/
 │   ├── components/
@@ -50,9 +45,9 @@ portfolio/
 │   │   └── stylle.css
 │   ├── images/
 │   └── App.js
-├── server.js
+├── vercel.json
 ├── package.json
-└── .env
+└── README.md
 ```
 
 ## 🚀 Getting Started
@@ -74,76 +69,59 @@ portfolio/
    npm install
    ```
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   ```
-   Then edit `.env` with your actual values.
-
-4. **Start the development server**
+3. **Start the development server**
    ```bash
    npm start
    ```
 
-5. **Start the backend server** (in a new terminal)
-   ```bash
-   node server.js
-   ```
-
-## 🔧 Environment Variables
-
-Create a `.env` file in the root directory with the following variables:
-
-```env
-# Google OAuth Credentials
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-GOOGLE_REFRESH_TOKEN=your_google_refresh_token
-GOOGLE_REDIRECT_URI=https://developers.google.com/oauthplayground
-
-# Email Configuration
-GMAIL_USER=your_gmail_user
-RECIPIENT_EMAIL=your_recipient_email
-CONTACT_EMAIL=your_contact_email
-
-# Contact Information
-PHONE_NUMBER=your_phone_number
-
-# Server Configuration
-PORT=3033
-NODE_ENV=development
-
-# Frontend Configuration
-REACT_APP_API_URL=http://localhost:3033
-```
-
 ## 🚀 Deployment
 
-### GitHub Pages Deployment
+### Vercel Deployment (Recommended)
 
 1. **Build the project**
    ```bash
    npm run build
    ```
 
-2. **Deploy to GitHub Pages**
+2. **Deploy to Vercel**
+   - Connect your GitHub repository to Vercel
+   - Vercel will automatically detect it's a React app
+   - Deploy with one click!
+
+### GitHub Pages Deployment
+
+1. **Add homepage to package.json**
+   ```json
+   {
+     "homepage": "https://yourusername.github.io/portfolio"
+   }
+   ```
+
+2. **Install gh-pages**
+   ```bash
+   npm install --save-dev gh-pages
+   ```
+
+3. **Add deploy scripts to package.json**
+   ```json
+   {
+     "scripts": {
+       "predeploy": "npm run build",
+       "deploy": "gh-pages -d build"
+     }
+   }
+   ```
+
+4. **Deploy**
    ```bash
    npm run deploy
    ```
-
-### Backend Deployment
-
-For the backend server, you can deploy to:
-- **Heroku**
-- **Vercel**
-- **Railway**
-- **Render**
 
 ## 📱 Features
 
 - **Responsive Navigation**: Hamburger menu for mobile devices
 - **Smooth Scrolling**: Between sections
-- **Contact Form**: With email integration
+- **Contact Integration**: Direct email and phone contact
 - **Skills Visualization**: Interactive charts
 - **Project Showcase**: With links to live demos
 - **Social Media Integration**: Links to GitHub, LinkedIn, etc.
