@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Navbar from './Navbar';
 
@@ -7,42 +8,102 @@ import Main from './Main';
 import Skills from './Skills';
 import Projects from './projects';
 import ContactForm from './ContactForm';
-function App() {
-  const [isLoading, setIsLoading] = useState(true); // Initial loading state
+
+// Scroll to top component
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    // Simulate async data fetching or any async operation
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, [pathname]);
+
+  return null;
+};
+
+// Page Transition Component
+const PageTransition = ({ children }) => {
+  const location = useLocation();
+  
+  return (
+    <div
+      key={location.pathname}
+      style={{
+        animation: 'fadeIn 0.5s ease-in-out'
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
     const fetchData = async () => {
-      // Simulate delay for 2 seconds
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setIsLoading(false); // Set loading state to false after delay (simulating data loaded)
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setIsLoading(false);
     };
 
-    fetchData(); // Call fetchData function
+    fetchData();
   }, []);
-  return (
-    <div>
-    {isLoading ? (
-        <div className="loading-wave">
-  <div class="loading-bar"></div>
-  <div class="loading-bar"></div>
-  <div class="loading-bar"></div>
-  <div class="loading-bar"></div>
 
+  return (
+    <Router>
+      <ScrollToTop />
+      <div>
+        {isLoading ? (
+          <div className="loading-container">
+            <div className="loading-wave">
+              <div className="loading-bar"></div>
+              <div className="loading-bar"></div>
+              <div className="loading-bar"></div>
+              <div className="loading-bar"></div>
+            </div>
+            <div className="loading-text">Loading Portfolio...</div>
+          </div>
+        ) : (
+          <div className="App">
+            <Navbar />
+            <Routes>
+              <Route path="/" element={
+                <PageTransition>
+                  <Main id="mainy" />
+                  <AboutMe id="aboutMey" />
+                  <Skills id="skills" />
+                  <Projects id="project" />
+                  <ContactForm id="contact" />
+                </PageTransition>
+              } />
+              <Route path="/about" element={
+                <PageTransition>
+                  <AboutMe id="aboutMey" />
+                </PageTransition>
+              } />
+              <Route path="/skills" element={
+                <PageTransition>
+                  <Skills id="skills" />
+                </PageTransition>
+              } />
+              <Route path="/projects" element={
+                <PageTransition>
+                  <Projects id="project" />
+                </PageTransition>
+              } />
+              <Route path="/contact" element={
+                <PageTransition>
+                  <ContactForm id="contact" />
+                </PageTransition>
+              } />
+            </Routes>
+          </div>
+        )}
       </div>
-    ) :(
-    <div className="App">
-      
-      <Navbar/>
-      <Main id="mainy" />
-      <AboutMe id="aboutMey" />
-      <Skills id="skills" />
-      <Projects id="project" />
-      <ContactForm id="contact" />
-    </div>
-    )
-  }
-  </div>
+    </Router>
   );
 }
 

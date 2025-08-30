@@ -1,11 +1,12 @@
 
 import './main.css';
 import React, { useState, useEffect } from 'react';
-import { Link as ScrollLink } from 'react-scroll';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -27,18 +28,18 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { to: "mainy", text: "Home" },
-    { to: "aboutMey", text: "About Me" },
-    { to: "skills", text: "Skills" },
-    { to: "project", text: "Projects" },
-    { to: "contact", text: "Contact Me" }
+    { to: "/", text: "Home" },
+    { to: "/about", text: "About Me" },
+    { to: "/skills", text: "Skills" },
+    { to: "/projects", text: "Projects" },
+    { to: "/contact", text: "Contact Me" }
   ];
 
   return (
     <>
       <div className='navbar'>
         <div className="left">
-          <h2 className='title'>My Portfolio</h2>
+          <Link to="/" className='title'>My Portfolio</Link>
         </div>
         
         {/* Hamburger Menu Button */}
@@ -51,35 +52,27 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className={`right ${isMobile ? 'mobile-hidden' : ''}`}>
           {navLinks.map((link) => (
-            <ScrollLink
+            <Link
               key={link.to}
               to={link.to}
-              spy={true}
-              smooth={true}
-              offset={-140}
-              duration={600}
-              className='button'
+              className={`button ${location.pathname === link.to ? 'active' : ''}`}
             >
               {link.text}
-            </ScrollLink>
+            </Link>
           ))}
         </div>
 
         {/* Mobile Navigation */}
         <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
-            <ScrollLink
+            <Link
               key={link.to}
               to={link.to}
-              spy={true}
-              smooth={true}
-              offset={-140}
-              duration={600}
-              className='mobile-button'
+              className={`mobile-button ${location.pathname === link.to ? 'active' : ''}`}
               onClick={closeMenu}
             >
               {link.text}
-            </ScrollLink>
+            </Link>
           ))}
         </div>
       </div>

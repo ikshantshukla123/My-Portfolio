@@ -6,6 +6,7 @@ A modern, responsive portfolio website showcasing my skills as a Full Stack Deve
 
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
 - **Modern UI/UX**: Beautiful animations and smooth transitions
+- **Client-Side Routing**: Fast navigation with React Router DOM
 - **Contact Integration**: Direct email and phone contact buttons
 - **Skills Showcase**: Interactive skill charts and progress indicators
 - **Project Gallery**: Showcase of my best projects
@@ -15,10 +16,10 @@ A modern, responsive portfolio website showcasing my skills as a Full Stack Deve
 
 ### Frontend
 - **React.js** - Main framework
+- **React Router DOM** - Client-side routing
 - **Framer Motion** - Animations
 - **CSS3** - Styling with custom animations
 - **FontAwesome** - Icons
-- **React Scroll** - Smooth scrolling navigation
 
 ## 📁 Project Structure
 
@@ -120,7 +121,7 @@ portfolio/
 ## 📱 Features
 
 - **Responsive Navigation**: Hamburger menu for mobile devices
-- **Smooth Scrolling**: Between sections
+- **Client-Side Routing**: Fast page transitions with React Router
 - **Contact Integration**: Direct email and phone contact
 - **Skills Visualization**: Interactive charts
 - **Project Showcase**: With links to live demos
@@ -133,6 +134,16 @@ portfolio/
 - **Loading Animations**: Smooth page transitions
 - **Modern Typography**: Clean and readable fonts
 - **Color Scheme**: Professional blue theme
+
+## 🔧 Routing
+
+The app uses React Router DOM for client-side routing:
+
+- `/` - Home page (all sections)
+- `/about` - About Me section
+- `/skills` - Skills section
+- `/projects` - Projects section
+- `/contact` - Contact section
 
 ## 📞 Contact
 
