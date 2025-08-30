@@ -19,7 +19,7 @@ const Projects = () => {
           imageUrl:chess,
           altText: 'Chess',
           title: 'LocalLanes',
-          description: '"An AI-powered chess system that recognizes physical pieces and plays autonomously using computer vision and advanced game algorithms."',
+          description: '"Web application which help you to get access to your nearest best spots."',
           explore:"https://local-lanes.vercel.app/"
 
         },
@@ -27,14 +27,14 @@ const Projects = () => {
           imageUrl: snake,
           altText: 'Canyons',
           title: 'Lottary App',
-          description: "an innovative twist on the classic snake game, allowing players to control the snake's movements through hand gestures, providing an engaging and interactive gaming experience.",
+          description: "A web3 application which give transparency in Lottary evern on get choosen randomly",
           explore:"https://github.com/ikshantshukla123/My-Lottary-App"
         },
         {
             imageUrl: wise_way,
             altText: 'wise_way',
             title: 'ThreeJs portfolio',
-            description: "a web application that uses advanced algorithms to calculate the most cost-effective route between two points.",
+            description: "a web application that uses ThreeJs to make beatuful UI.",
             explore:"https://github.com/ikshantshukla123/ThreeJs"
           }
       ];
