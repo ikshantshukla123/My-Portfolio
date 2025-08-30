@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPaperPlane, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 import BackToTopButton from './BackToTopButton';
 import './stylle.css';
@@ -22,11 +22,13 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(process.env.REACT_APP_API_URL || 'http://localhost:3033/api/send', formData);
+      // For production, you'll need to set up a proper backend URL
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3033';
+      const response = await axios.post(`${apiUrl}/api/send`, formData);
       alert(response.data);
     } catch (error) {
       console.error('Error sending email:', error);
-      alert('Error sending email');
+      alert('Error sending email. Please try again later.');
     }
 
     setFormData({
@@ -45,16 +47,16 @@ const ContactForm = () => {
             <li className="list-item">
               <FontAwesomeIcon icon={faPhone} />
               <span className="contact-text phone">
-                <a href={`tel:${process.env.REACT_APP_PHONE_NUMBER || '+91 8109537034'}`} title="Give me a call">
-                  {process.env.REACT_APP_PHONE_NUMBER || '+91 8109537034'}
+                <a href="tel:+91 8109537034" title="Give me a call">
+                  +91 8109537034
                 </a>
               </span>
             </li>
             <li className="list-item">
               <FontAwesomeIcon icon={faEnvelope} />
               <span className="contact-text gmail">
-                <a href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL || 'ikshankshukla44@gmail.com'}`} title="Send me an email">
-                  {process.env.REACT_APP_CONTACT_EMAIL || 'ikshankshukla44@gmail.com'}
+                <a href="mailto:ikshankshukla44@gmail.com" title="Send me an email">
+                  ikshankshukla44@gmail.com
                 </a>
               </span>
             </li>

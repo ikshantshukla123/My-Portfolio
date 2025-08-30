@@ -36,7 +36,7 @@ const Main = () => {
         </div>
         </div>
         <div className="flex1">
-        <a href={`mailto:${process.env.REACT_APP_CONTACT_EMAIL || 'ikshankshukla44@gmail.com'}`}><button className='buttonc'>E-Mail Me</button></a>
+        <a href="mailto:ikshankshukla44@gmail.com"><button className='buttonc'>E-Mail Me</button></a>
         <button onClick={() => window.open("__", "_blank")} className='buttonb'>Resume</button>
         </div>
       </div>
