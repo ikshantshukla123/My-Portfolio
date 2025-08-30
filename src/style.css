@@ -1,0 +1,210 @@
+/* styles.css */
+
+/* VARIABLES */
+:root {
+  --color-header: #ffffff;
+  --color-text: #f7f7f7a0;
+  --color-btn-text: #739efc;
+  --color-btn-border: 2px solid rgba(230, 236, 255, 0.98);
+  --transition: 0.2s;
+}
+
+/* RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* GLOBAL */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 10px/16px */
+}
+
+/* HEADING STYLES */
+.heading1 {
+  color: #ffffff;
+  text-align: center;
+  margin: 8% 0 4% 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 4.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  background: linear-gradient(135deg, #03B0FD 0%, #ffffff 50%, #03B0FD 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease-in-out infinite;
+  text-shadow: 0 0 30px rgba(3, 176, 253, 0.3);
+}
+
+.heading1::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #03B0FD, transparent);
+  border-radius: 2px;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.heading1::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: #03B0FD;
+  border-radius: 1px;
+  opacity: 0.6;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(3, 176, 253, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(3, 176, 253, 0.8);
+  }
+}
+
+/* Responsive heading styles */
+@media screen and (max-width: 768px) {
+  .heading1 {
+    font-size: 3.2rem;
+    margin: 6% 0 3% 0;
+    letter-spacing: 1.5px;
+  }
+  
+  .heading1::before {
+    width: 60px;
+    height: 3px;
+  }
+  
+  .heading1::after {
+    width: 30px;
+    height: 1.5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heading1 {
+    font-size: 2.8rem;
+    margin: 5% 0 2.5% 0;
+    letter-spacing: 1px;
+  }
+  
+  .heading1::before {
+    width: 50px;
+    height: 2.5px;
+  }
+  
+  .heading1::after {
+    width: 25px;
+    height: 1px;
+  }
+}
+
+/* MAIN CONTENT */
+.grid {
+  display: flex;
+  flex-wrap: wrap; /* Ensures items wrap to the next line when necessary */
+  justify-content: center; /* Centers flex items horizontally */
+  gap: 3rem; /* Adjust as needed */
+  width: 100%;
+  padding: 0 3rem; /* Add padding to the sides as needed */
+}
+
+.grid .card {
+  display: flex;
+  flex-direction: column;
+  background-color: #1E2635;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: var(--transition);
+  width: 40rem; /* Initial width for each card */
+  margin-bottom: 3rem; /* Vertical margin between cards */
+}
+
+.grid .card:hover {
+  transform: translateY(-0.5%);
+  box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.2);
+}
+
+.grid .card__img {
+  width: 100%;
+  height: 18rem;
+  object-fit: cover;
+}
+
+.grid .card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content inside each card is evenly spaced */
+  padding: 2rem;
+  height: 100%;
+}
+
+.grid .card__header {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--color-header);
+  margin-bottom: 1rem; /* Adjust spacing between header and text */
+}
+
+.grid .card__text {
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: 1rem; /* Adjust spacing between text and button */
+}
+
+.grid .card__btn {
+  display: block;
+  width: 100%;
+  padding: 1.5rem;
+  margin-top:3rem;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--color-btn-text);
+  background-color: var(--color-btn-background); /* Define this variable if needed */
+  border: none;
+  border-radius: 0.4rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.grid .card__btn:hover,
+.grid .card__btn:active {
+  background-color: rgba(230, 236, 255, 0.201); /* Example RGBA value */
+}
+
+.completely {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

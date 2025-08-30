@@ -1,0 +1,312 @@
+.navbar{
+    position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100px;
+    background-color: #151925;
+    transition: top 0.3s;
+}
+.left{
+    width:35%;
+    display: flex;
+    justify-content: left;
+}
+.right{
+    width:55%;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: #03B0FD;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100vh;
+  background-color: #151925;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-button {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+  color: #03B0FD;
+  cursor: pointer;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.mobile-button:hover {
+  background-color: rgba(3, 176, 253, 0.1);
+  color: #fff;
+}
+
+.button{
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    background-color: transparent;
+    border-color: transparent;
+    width:120px;
+    height:30px;
+    font-size: 18px;
+    color:#03B0FD;
+    cursor: pointer;
+}
+.button {
+  position: relative;
+  border: none;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.button:focus,
+.button:hover {
+  color: #fff;
+}
+
+.button:focus:after,
+.button:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.button:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .hamburger-menu {
+    display: flex;
+    position: absolute;
+    right: 20px;
+  }
+  
+  .right {
+    display: none;
+  }
+  
+  .left {
+    width: 60%;
+  }
+  
+  .navbar {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .left {
+    width: 70%;
+  }
+  
+  .title {
+    font-size: 18px;
+  }
+  
+  .hamburger-menu {
+    right: 15px;
+  }
+  
+  .mobile-menu {
+    width: 200px;
+  }
+  
+  .mobile-button {
+    width: 150px;
+    font-size: 16px;
+  }
+}
+
+body{
+    background-color: #151925;
+}
+
+/* Enhanced Portfolio Title Styling */
+.title{
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: relative;
+    background: linear-gradient(135deg, #03B0FD 0%, #ffffff 50%, #03B0FD 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleGradientShift 4s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(3, 176, 253, 0.3);
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03B0FD, transparent);
+  border-radius: 1px;
+  animation: titleGlowPulse 3s ease-in-out infinite;
+}
+
+@keyframes titleGradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes titleGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 3px rgba(3, 176, 253, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(3, 176, 253, 0.7);
+  }
+}
+
+/* Responsive title styles */
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+
+@keyframes typing {
+    /* web developer */
+    0%, 27.3488% { content: ""; }
+    1.667%, 48.2093% { content: "w"; }
+    3.334%, 46.0698% { content: "we"; }
+    5.001%, 44.9302% { content: "web"; }
+    6.668%, 42.7907% { content: "web "; }
+    8.335%, 40.6512% { content: "web d"; }
+    11.669%, 38.5116% { content: "web de"; }
+    13.336%, 36.3721% { content: "web dev"; }
+    15.003%, 34.2326% { content: "web deve"; }
+    16.670%, 32.0930% { content: "web devel"; }
+    19.3953%, 31.9535% { content: "web develo"; }
+    21.5349%, 29.8140% { content: "web develop"; }
+    23.6744%, 28.6744% { content: "web develope"; }
+    25.8140%, 26.5349% { content: "web developer"; }
+  
+    /* ai-ml developer */
+   50.4186%, 99.9302% { content: ""; }
+52.5581%, 98.7907% { content: "Bl"; }
+54.6977%, 97.6512% { content: "Blo"; }
+56.8372%, 96.5116% { content: "Bloc"; }
+58.9767%, 95.3721% { content: "Block"; }
+60.1163%, 94.2326% { content: "Blockc"; }
+62.2558%, 93.0930% { content: "Blockch"; }
+64.3953%, 92.9535% { content: "Blockcha"; }
+66.5349%, 91.2345% { content: "Blockchai"; }
+68.6744%, 90.8140% { content: "Blockchain"; }
+70.8140%, 89.4943% { content: "Blockchain "; }
+72.9535%, 88.6744% { content: "Blockchain d"; }
+74.0930%, 86.5349% { content: "Blockchain de"; }
+76.2326%, 84.3953% { content: "Blockchain dev"; }
+78.3721%, 82.2558% { content: "Blockchain deve"; }
+80.5116%, 80.1163% { content: "Blockchain devel"; }
+82.6512%, 78.9767% { content: "Blockchain develo"; }
+84.7907%, 77.8372% { content: "Blockchain develop"; }
+86.9302%, 76.6977% { content: "Blockchain develope"; }
+89.0698%, 74.5581% { content: "Blockchain developer"; }
+
+  }
+  
+
+
+  .typewriter {
+    --caret:#03B0FD;
+  }
+  
+  .typewriter::before {
+    content: "";
+    animation: typing 13.5s infinite;
+  }
+  
+  .typewriter::after {
+    content: "";
+    border-right: 1px solid var(--caret);
+    animation: blink 0.5s linear infinite;
+  }
